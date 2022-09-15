@@ -1,0 +1,70 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: rabbitmq:3.10.7
+    env_file: envs/rabbitmq.env
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+
+  db:
+    image: postgres:14.5
+    env_file: envs/db.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+#  client:
+#    image: node:18.9.0
+#    volumes:
+#      - ./client:/src
+#    command: /bin/bash -c "cd /src/; npm i; npm run dev"
+#    ports:
+#      - "5137:5137"
+
+  web:
+    build: .
+    image: imdb
+    links:
+      - db:db
+      - rabbitmq:rabbitmq
+    volumes:
+      - .:/src
+      - ./static:/static
+    env_file:
+      - envs/rabbitmq.env
+      - envs/db.env
+      - envs/.env
+    command: /bin/bash -c 'pip install -r requirements.txt; invoke run'
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.docker
+
+  celery:
+    build: .
+    image: imdb
+    links:
+      - db:db
+      - rabbitmq:rabbitmq
+    volumes:
+      - .:/src
+    env_file:
+      - envs/rabbitmq.env
+      - envs/db.env
+      - envs/.env
+    command: "celery -A config.celery.app worker"
+
+
+  nginx:
+    image: nginx:1.23.1
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./static:/static:ro
+    links:
+      - web:web
+    ports:
+      - "8000:80"
+
+volumes:
+  pgdata: {}
+  rabbitmq: {}
+  static: {}
