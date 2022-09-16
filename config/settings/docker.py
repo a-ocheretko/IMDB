@@ -12,8 +12,15 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+    }
+}
+
 # CELERY STUFF
-CELERY_BROKER_URL = 'amqp://user:password@rabbitmq:5672/celery_tasks'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 DEFAULT_FROM_EMAIL = 'from@mysite.com'
 

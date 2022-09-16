@@ -1,10 +1,9 @@
 version: "3.9"
 services:
-  rabbitmq:
-    image: rabbitmq:3.10.7
-    env_file: envs/rabbitmq.env
+  redis:
+    image: redis:7.0.4
     volumes:
-      - rabbitmq:/var/lib/rabbitmq
+      - redis:/data
 
   db:
     image: postgres:14.5
@@ -27,12 +26,11 @@ services:
     image: imdb
     links:
       - db:db
-      - rabbitmq:rabbitmq
+      - redis:redis
     volumes:
       - .:/src
       - ./static:/static
     env_file:
-      - envs/rabbitmq.env
       - envs/db.env
       - envs/.env
     command: /bin/bash -c 'pip install -r requirements.txt; invoke run'
@@ -44,14 +42,13 @@ services:
     image: imdb
     links:
       - db:db
-      - rabbitmq:rabbitmq
+      - redis:redis
     volumes:
       - .:/src
     env_file:
-      - envs/rabbitmq.env
       - envs/db.env
       - envs/.env
-    command: "celery -A config.celery.app worker"
+    command: /bin/bash -c 'pip install -r requirements.txt; celery -A config.celery.app worker'
 
 
   nginx:
@@ -66,5 +63,5 @@ services:
 
 volumes:
   pgdata: {}
-  rabbitmq: {}
   static: {}
+  redis: {}

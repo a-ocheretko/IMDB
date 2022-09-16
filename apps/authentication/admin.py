@@ -8,4 +8,4 @@ User = get_user_model()
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('is_staff', 'is_active')

@@ -24,7 +24,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('api/v1/auth/', include('apps.authentication.api_urls', namespace='auth-api')),
-    # path('api/v1/movies/', include('apps.movies.api_urls', namespace='movies-api')),
+    path('api/v1/imdb/', include('apps.imdb.api_urls', namespace='movies-api')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
