@@ -1,3 +1,0 @@
--r requirements.txt
-
-prospector==1.7.7

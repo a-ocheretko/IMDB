@@ -13,13 +13,14 @@ services:
     ports:
       - "5432:5432"
 
-#  client:
-#    image: node:18.9.0
-#    volumes:
-#      - ./client:/src
-#    command: /bin/bash -c "cd /src/; npm i; npm run dev"
-#    ports:
-#      - "5137:5137"
+  client:
+    build: client
+    image: node:18.9.0
+    volumes:
+      - ./client:/src
+    command: /bin/bash -c "cd /src/ && npm install && npm run dev"
+    ports:
+      - "5173:5173"
 
   web:
     build: .
@@ -33,7 +34,7 @@ services:
     env_file:
       - envs/db.env
       - envs/.env
-    command: /bin/bash -c 'pip install -r requirements.txt; invoke run'
+    command: /bin/bash -c 'pip install -r requirements.txt && invoke run'
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.docker
 
@@ -48,7 +49,7 @@ services:
     env_file:
       - envs/db.env
       - envs/.env
-    command: /bin/bash -c 'pip install -r requirements.txt; celery -A config.celery.app worker'
+    command: /bin/bash -c 'pip install -r requirements.txt && celery -A config.celery.app worker'
 
 
   nginx:
