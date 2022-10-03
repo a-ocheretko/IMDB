@@ -39,3 +39,6 @@ class PersonMovie(models.Model):
     category = models.CharField(max_length=255, verbose_name=_("Category"))
     job = models.CharField(max_length=255, verbose_name=_("Job"), null=True)
     characters = ArrayField(models.CharField(max_length=255), verbose_name=_("Characters"), null=True)
+
+    def __str__(self):
+        return str(self.person) if self.category == 'director' else ''

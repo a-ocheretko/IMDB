@@ -1,18 +1,17 @@
 <template>
   <div>
     <div v-if="userStore.user">
-      {{ userStore.getUserName }}
-
-      <a href="#" @click="logOut"> Log out</a>
+      <b>{{ userStore.getUserName }}</b>
+      <a href="#" @click="logOut"><button class="mw-100 btn btn-sm btn-primary" style="margin: 5px; color: white" type="button"><b>Log Out</b></button></a>
     </div>
     <div v-else>
-      <RouterLink to="login"> Log In </RouterLink>
+      <RouterLink to="/login"><button class="mw-100 btn btn-sm btn-primary" style="margin: 5px; color: white" type="button"><b>Log In</b></button></RouterLink>
     </div>
   </div>
 </template>
 
 <script>
-import {useUserStore} from "../../stores/user";
+import { useUserStore } from "../../stores/user"
 
 export default {
   name: "UserBadge",

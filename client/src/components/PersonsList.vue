@@ -1,7 +1,9 @@
 <template>
 <div></div>
   <ul>
-    <li v-for="person in persons" :style="{color}"> {{ person.name }} </li>
+    <li v-for="person in persons" :style="{color}">
+      <a href="#">{{ person.name }}</a>
+    </li>
   </ul>
 
 </template>

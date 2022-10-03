@@ -3,7 +3,7 @@ from .serializers import *
 from .models import *
 
 
-class AbstractListCreateAPIView(ListCreateAPIView):
+class BaseListCreateAPIView(ListCreateAPIView):
     serializer_class = None
     model = None
 
@@ -11,7 +11,7 @@ class AbstractListCreateAPIView(ListCreateAPIView):
         return self.model.objects.all()
 
 
-class AbstractRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class BaseRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = None
     model = None
 
@@ -19,31 +19,31 @@ class AbstractRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
         return self.model.objects.all()
 
 
-class MovieListCreateAPIView(AbstractListCreateAPIView):
+class MovieListCreateAPIView(BaseListCreateAPIView):
+    serializer_class = DirectorMovieSerializer
+    model = Movie
+
+
+class MovieRetrieveUpdateDestroyAPIView(BaseRetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
     model = Movie
 
 
-class MovieRetrieveUpdateDestroyAPIView(AbstractRetrieveUpdateDestroyAPIView):
-    serializer_class = MovieSerializer
-    model = Movie
-
-
-class PersonListCreateAPIView(AbstractListCreateAPIView):
+class PersonListCreateAPIView(BaseListCreateAPIView):
     serializer_class = PersonSerializer
     model = Person
 
 
-class PersonRetrieveUpdateDestroyAPIView(AbstractRetrieveUpdateDestroyAPIView):
+class PersonRetrieveUpdateDestroyAPIView(BaseRetrieveUpdateDestroyAPIView):
     serializer_class = PersonSerializer
     model = Person
 
 
-class PersonMovieListCreateAPIView(AbstractListCreateAPIView):
+class PersonMovieListCreateAPIView(BaseListCreateAPIView):
     serializer_class = PersonMovieSerializerMin
     model = PersonMovie
 
 
-class PersonMovieRetrieveUpdateDestroyAPIView(AbstractRetrieveUpdateDestroyAPIView):
+class PersonMovieRetrieveUpdateDestroyAPIView(BaseRetrieveUpdateDestroyAPIView):
     serializer_class = PersonMovieSerializer
     model = PersonMovie

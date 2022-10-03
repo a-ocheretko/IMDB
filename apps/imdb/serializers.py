@@ -27,3 +27,12 @@ class PersonMovieSerializerMin(serializers.ModelSerializer):
     class Meta:
         model = PersonMovie
         fields = '__all__'
+
+
+class DirectorMovieSerializer(serializers.ModelSerializer):
+
+    director = serializers.StringRelatedField(source='personmovie_set', many=True, read_only=True)
+
+    class Meta:
+        model = Movie
+        fields = ['id', 'imdb_id', 'name', 'year', 'genres', 'director']

@@ -7,7 +7,7 @@ app_name = 'apps.imdb'
 
 urlpatterns = [
     path('movie/',
-         cache_page(int(os.getenv('IMDB_CACHE_TIMEOUT')))(MovieListCreateAPIView.as_view()),
+         (MovieListCreateAPIView.as_view()),
          name='movie-list-create'),
     path('movie/<str:pk>/',
          cache_page(int(os.getenv('IMDB_CACHE_TIMEOUT')))(MovieRetrieveUpdateDestroyAPIView.as_view()),
