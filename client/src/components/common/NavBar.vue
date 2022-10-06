@@ -12,7 +12,7 @@
           <a class="nav-link active" aria-current="page" href="/movies/?page=1">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/persons">Persons</a>
+          <a class="nav-link active" aria-current="page" href="/persons/?page=1">Persons</a>
         </li>
       </ul>
         <UserBadge />

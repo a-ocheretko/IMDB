@@ -32,7 +32,10 @@ class PersonMovieSerializerMin(serializers.ModelSerializer):
 class DirectorMovieSerializer(serializers.ModelSerializer):
 
     director = serializers.StringRelatedField(source='personmovie_set', many=True, read_only=True)
+    persons = serializers.SlugRelatedField(source='personmovie_set', many=True, read_only=True, slug_field='person_id')
+    position = serializers.SlugRelatedField(source='personmovie_set', many=True, read_only=True, slug_field='category')
+    role = serializers.SlugRelatedField(source='personmovie_set', many=True, read_only=True, slug_field='characters')
 
     class Meta:
         model = Movie
-        fields = ['id', 'imdb_id', 'name', 'year', 'genres', 'director']
+        fields = ['id', 'imdb_id', 'name', 'year', 'genres', 'director', 'persons', 'position', 'role']

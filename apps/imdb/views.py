@@ -25,7 +25,7 @@ class MovieListCreateAPIView(BaseListCreateAPIView):
 
 
 class MovieRetrieveUpdateDestroyAPIView(BaseRetrieveUpdateDestroyAPIView):
-    serializer_class = MovieSerializer
+    serializer_class = DirectorMovieSerializer
     model = Movie
 
 
