@@ -8,7 +8,7 @@
           <div v-if="m.director.length !== 0" style="position: absolute; left: 0; top: 35%">
             <td style="border: hidden" v-for="d in m.director" v-show="d" :style="{color}">
               <td style="border: hidden">
-                <b>{{ d }}</b>
+                <b style="color: royalblue">{{ d }}</b>
               </td>
             </td>
           </div>
@@ -28,67 +28,67 @@
   </table>
   <table style="margin: auto;">
     <tbody>
-      <td v-if="currentPage===firstPage" style="position:absolute; left: 26%;">
-        <button class="mw-100 btn btn-sm btn-danger" disabled="disabled" style="margin: 1px; width: 43px; color: white"
+      <td v-if="currentPage===firstPage" style="position:absolute; left: 23%;">
+        <button class="mw-100 btn btn-sm btn-danger" disabled="disabled" style="margin: 1px; width: 50px; color: white"
                 type="button">
-          <b>&lt&lt</b>
+          <b>First</b>
         </button>
       </td>
-      <td v-else style="position:absolute; left: 26%;" @click="redirectTo(firstPage)">
+      <td v-else style="position:absolute; left: 23%;" @click="redirectTo(firstPage)">
         <a href="#">
-          <button class="mw-100 btn btn-sm btn-danger" style="margin: 1px; width: 43px; color: white" type="button">
-            <b>&lt&lt</b>
+          <button class="mw-100 btn btn-sm btn-danger" style="margin: 1px; width: 50px; color: white" type="button">
+            <b>First</b>
           </button>
         </a>
       </td>
-      <td v-if="currentPage > firstPage" style="position:absolute; left: 30%;" @click="redirectTo(--currentPage)">
+      <td v-if="currentPage > firstPage" style="position:absolute; left: 27%;" @click="redirectTo(--currentPage)">
         <a href="#">
-          <button class="mw-100 btn btn-sm btn-info" style="margin: 1px; width: 43px; color: white" type="button">
-            <b>&lt</b>
+          <button class="mw-100 btn btn-sm btn-info" style="margin: 1px; width: 50px; color: white" type="button">
+            <b>Prev</b>
           </button>
         </a>
       </td>
-      <td v-else style="position:absolute; left: 30%;">
-        <button class="mw-100 btn btn-sm btn-info" disabled="disabled" style="margin: 1px; width: 43px; color: white"
+      <td v-else style="position:absolute; left: 27%;">
+        <button class="mw-100 btn btn-sm btn-info" disabled="disabled" style="margin: 1px; width: 50px; color: white"
                 type="button">
-          <b>&lt</b>
+          <b>Prev</b>
         </button>
       </td>
       <td v-for="page in pagesArray" @click="redirectTo(page)" :style="color">
         <a href="#">
-          <button v-if="currentPage===page" class="mw-100 btn btn-sm btn-warning" style="margin: 1px; width: 43px;
+          <button v-if="currentPage===page" class="mw-100 btn btn-sm btn-warning" style="margin: 1px; width: 50px;
           color: white" type="button">
             {{ page }}
           </button>
-          <button v-else class="mw-100 btn btn-sm btn-primary" style="margin: 1px; width: 43px; color: white"
+          <button v-else class="mw-100 btn btn-sm btn-primary" style="margin: 1px; width: 50px; color: white"
                   type="button">
             {{ page }}
           </button>
         </a>
       </td>
-      <td v-if="currentPage < lastPage" style="position:absolute; right: 30%;" @click="redirectTo(++currentPage)">
+      <td v-if="currentPage < lastPage" style="position:absolute; right: 27%;" @click="redirectTo(++currentPage)">
         <a href="#">
-          <button class="mw-100 btn btn-sm btn-info" style="margin: 1px; width: 43px; color: white" type="button">
-            <b>&gt</b>
+          <button class="mw-100 btn btn-sm btn-info" style="margin: 1px; width: 50px; color: white" type="button">
+            <b>Next</b>
           </button>
         </a>
       </td>
-      <td v-else style="position:absolute; right: 30%;">
-        <button class="mw-100 btn btn-sm btn-info" disabled="disabled" style="margin: 1px; width: 43px; color: white"
+      <td v-else style="position:absolute; right: 27%;">
+        <button class="mw-100 btn btn-sm btn-info" disabled="disabled" style="margin: 1px; width: 50px; color: white"
                 type="button">
-          <b>&gt</b>
+          <b>Next</b>
         </button>
       </td>
-      <td v-if="currentPage===lastPage" style="position:absolute; right: 26%;">
-        <button class="mw-100 btn btn-sm btn-danger" disabled="disabled" style="margin: 1px; width: 43px; color: white"
+      <td v-if="currentPage===lastPage" style="position:absolute; right: 23%;">
+        <button class="mw-100 btn btn-sm btn-danger" disabled="disabled" style="margin: 1px; width: 50px; color: white"
                 type="button">
-          <b>&gt&gt</b>
+          <b>Last</b>
         </button>
       </td>
-      <td v-else style="position:absolute; right: 26%;" @click="redirectTo(lastPage)">
+      <td v-else style="position:absolute; right: 23%;" @click="redirectTo(lastPage)">
         <a href="#">
-          <button class="mw-100 btn btn-sm btn-danger" style="margin: 1px; width: 43px; color: white" type="button">
-            <b>&gt&gt</b>
+          <button class="mw-100 btn btn-sm btn-danger" style="margin: 1px; width: 50px; color: white" type="button">
+            <b>Last</b>
           </button>
         </a>
       </td>

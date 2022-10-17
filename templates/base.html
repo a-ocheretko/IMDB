@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>My movies app</title>
+  </head>
+    <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #FFC312;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/movies/?page=1">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/persons/?page=1">Persons</a>
+        </li>
+      </ul>
+{#        <UserBadge />#}
+    </div>
+  </div>
+</nav>
+        <div id="content">
+          {% block content %}
+            <h2>Entry one</h2>
+            <p>This is my first entry.</p>
+
+            <h2>Entry two</h2>
+            <p>This is my second entry.</p>
+          {% endblock %}
+        </div>
+    </body>
+</html>

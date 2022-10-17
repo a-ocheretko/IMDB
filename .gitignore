@@ -224,5 +224,3 @@ dmypy.json
 cython_debug/
 
 static/
-
-*.tsv

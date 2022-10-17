@@ -27,7 +27,7 @@
       <td>
         <tr style="border: hidden; height: 30px" v-for="name in personsList" :style="{color}">
           <td>
-            <a href="#">{{ name }}</a>
+            {{ name }}
           </td>
         </tr>
       </td>
@@ -77,11 +77,6 @@ export default {
       currentPage: 0,
     }
   },
-  methods: {
-      redirectToPerson(id){
-        window.location.href=`/persons/${id}`
-      }
-    },
   async beforeMount() {
 
     const path = window.location.pathname.split('/')
